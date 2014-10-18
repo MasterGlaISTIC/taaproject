@@ -1,4 +1,4 @@
-package fr.inria.taa.util;
+package fr.istic.taa.util;
 
 /**
  * Created by leiko on 22/09/14.

@@ -1,4 +1,4 @@
-package fr.inria.taa.model;
+package fr.istic.taa.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
