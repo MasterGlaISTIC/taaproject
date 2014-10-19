@@ -1,10 +1,13 @@
 package fr.istic.taa.model;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,110 +17,113 @@ import javax.persistence.TemporalType;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
+ * 
+ * 
  */
  
 @Entity 
-public class Event
+public class Event implements Serializable
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	 
-	@Column(nullable = false) 
-	protected long idEvent;
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
-	@Column(nullable = false) 
-	protected String adresse;
+	@Column(nullable = false)
+	private long idEvent;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
-	@Column(nullable = false) 
-	protected String name;
+	 
+	private String adresse;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	 
+	 
+	private String name;
+
+	/**
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
 	@Temporal(TemporalType.DATE) 
-	@Column(nullable = false) 
-	protected Date date;
+	 
+	private Date date;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
 	@OneToMany(mappedBy = "event") 
-	protected Set<User> createur;
+	private Set<User> createur;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
 	@OneToMany(mappedBy = "event") 
-	protected Set<Comment> comment;
+	private Set<Comment> comment;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	 
 	@ManyToOne 
 	@JoinColumn(nullable = false) 
-	protected Participation participation;
+	private Participation participation;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
-	@Id 
-	@Column(nullable = false) 
-	protected final Long id = 0L;
+
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * 
+	 * 
+	 * 
 	 */
 	public Event(){
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void basicSetParticipation(Participation myParticipation) {
 		if (this.participation != myParticipation) {
@@ -133,50 +139,52 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getIdEvent() {
 		return this.idEvent;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public String getAdresse() {
 		return this.adresse;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public String getName() {
 		return this.name;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public Date getDate() {
 		return this.date;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public Set<User> getCreateur() {
 		if(this.createur == null) {
@@ -186,10 +194,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public Set<Comment> getComment() {
 		if(this.comment == null) {
@@ -199,30 +207,22 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public Participation getParticipation() {
 		return this.participation;	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;	
-	}
+
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void addAllCreateur(Set<User> newCreateur) {
 		if (this.createur == null) {
@@ -234,10 +234,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void addAllComment(Set<Comment> newComment) {
 		if (this.comment == null) {
@@ -249,10 +249,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void removeAllCreateur(Set<User> newCreateur) {
 		if(this.createur == null) {
@@ -263,10 +263,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void removeAllComment(Set<Comment> newComment) {
 		if(this.comment == null) {
@@ -277,50 +277,50 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setIdEvent(long myIdEvent) {
 		this.idEvent = myIdEvent;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setAdresse(String myAdresse) {
 		this.adresse = myAdresse;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setName(String myName) {
 		this.name = myName;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setDate(Date myDate) {
 		this.date = myDate;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void addCreateur(User newCreateur) {
 		if(this.createur == null) {
@@ -332,10 +332,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void addComment(Comment newComment) {
 		if(this.comment == null) {
@@ -347,10 +347,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setParticipation(Participation myParticipation) {
 		this.basicSetParticipation(myParticipation);
@@ -358,50 +358,50 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetIdEvent() {
 		this.idEvent = 0L;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetAdresse() {
 		this.adresse = "";	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetName() {
 		this.name = "";	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetDate() {
 		this.date = new Date();	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void removeCreateur(User oldCreateur) {
 		if(this.createur == null)
@@ -413,10 +413,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void removeComment(Comment oldComment) {
 		if(this.comment == null)
@@ -428,10 +428,10 @@ public class Event
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetParticipation() {
 		if (this.participation == null)

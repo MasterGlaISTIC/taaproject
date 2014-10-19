@@ -1,89 +1,75 @@
 package fr.istic.taa.model;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * 
+ * 
+ * 
  */
  
 @Entity 
-public class Comment
+public class Comment implements Serializable
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	 
-	@Column(nullable = false) 
-	protected long idComment;
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 Attribut qui représente l'identifiant du commentaire
 	 */
 	 
-	@Column(nullable = false) 
-	protected String comment;
+	@Column(nullable = false)
+	private long idComment;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 Attribut qui représente le vrai commentaire
+	 * 
+	 */
+	 
+	 
+	private String comment;
+
+	/**
+	 * Evenement auquel est attaché le commentaire
+	 * 
+	 * 
 	 */
 	 
 	@ManyToOne 
 	@JoinColumn(nullable = false) 
-	protected Event event;
+	private Event event;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 L'utilisateur qui a poser le commentaire
 	 */
 	 
-	@ManyToMany(mappedBy = "comment") 
-	protected Set<User> user;
+	@ManyToOne 
+	protected User user;
+
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	@Id 
-	@Column(nullable = false) 
-	protected final Long id = 0L;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * constructeur par defaut de la classe commentaire
+	 * 
 	 */
 	public Comment(){
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void basicSetEvent(Event myEvent) {
 		if (this.event != myEvent) {
@@ -99,158 +85,110 @@ public class Comment
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
-	public long getIdComment() {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+		public long getIdComment() {
 		return this.idComment;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public String getComment() {
 		return this.comment;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public Event getEvent() {
 		return this.event;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
-	public Set<User> getUser() {
-		if(this.user == null) {
-				this.user = new HashSet<User>();
-		}
-		return (Set<User>) this.user;	
+	public User getUser() {
+		return this.user;	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;	
-	}
+
+	
+
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void addAllUser(Set<User> newUser) {
-		if (this.user == null) {
-			this.user = new HashSet<User>();
-		}
-		for (User tmp : newUser)
-			tmp.addComment(this);
-			
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeAllUser(Set<User> newUser) {
-		if(this.user == null) {
-			return;
-		}
-		
-		this.user.removeAll(newUser);	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setIdComment(long myIdComment) {
 		this.idComment = myIdComment;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setComment(String myComment) {
 		this.comment = myComment;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void setEvent(Event myEvent) {
 		this.basicSetEvent(myEvent);
 		myEvent.addComment(this);	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void addUser(User newUser) {
-		if(this.user == null) {
-			this.user = new HashSet<User>();
-		}
-		
-		if (this.user.add(newUser))
-			newUser.addComment(this);	
-	}
+
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetIdComment() {
 		this.idComment = 0L;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetComment() {
 		this.comment = "";	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetEvent() {
 		if (this.event == null)
@@ -260,20 +198,6 @@ public class Comment
 		oldevent.removeComment(this);	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeUser(User oldUser) {
-		if(this.user == null)
-			return;
-		
-		if (this.user.remove(oldUser))
-			oldUser.removeComment(this);
-			
-	}
 	
 }
 

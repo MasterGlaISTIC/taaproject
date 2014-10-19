@@ -1,193 +1,174 @@
 package fr.istic.taa.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
- 
-@Entity 
-public class Car
-{
+@Entity
+public class Car implements Serializable {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
-	 
-	@Column(nullable = false) 
-	protected int nbrPlaces;
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * Attribut qui représente le nombre de palces de la voiture
+	 * 
+	 * 
+	 * 
 	 */
-	 
-	@Column(nullable = false) 
-	protected long idCar;
+
+	private int nbrPlaces;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * Attribut qui représente l'identifiant de la voiture
+	 * 
+	 * 
+	 * 
 	 */
-	 
-	@OneToOne(mappedBy = "car") 
-	protected User user;
+	@Column(nullable = false)
+	private long idCar;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * Attribut qui représente l'utilisatuer de la voiture
+	 * 
+	 * 
+	 * 
 	 */
-	@Id 
-	@Column(nullable = false) 
-	protected final Long id = 0L;
+
+	@OneToOne(mappedBy = "car")
+	private User user;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
+	 * Constructeur par défault de la voiture
+	 * 
+	 * 
 	 */
-	public Car(){
+	public Car() {
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * Fonction qui unitialise l'utilisateur de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public void basicSetUser(User myUser) {
 		if (this.user != myUser) {
-			if (myUser != null){
-				if (this.user != myUser) {
-					User olduser = this.user;
-					this.user = myUser;
-					if (olduser != null)
-						olduser.unsetCar();
-				}
+			if (myUser != null) {
+				User olduser = this.user;
+				this.user = myUser;
+				if (olduser != null)
+					olduser.unsetCar();
+
 			}
-		}	
+		}
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * getter de nombre de places
+	 * 
+	 * 
+	 * 
 	 */
 	public int getNbrPlaces() {
-		return this.nbrPlaces;	
+		return this.nbrPlaces;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * getter de l'identifiant de la voiture
+	 * 
+	 * 
+	 * 
 	 */
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getIdCar() {
-		return this.idCar;	
+		return this.idCar;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * getter de l'utilisateur de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public User getUser() {
-		return this.user;	
+		return this.user;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * setter de nombre de places
+	 * 
+	 * 
+	 * 
 	 */
 	public void setNbrPlaces(int myNbrPlaces) {
-		this.nbrPlaces = myNbrPlaces;	
+		this.nbrPlaces = myNbrPlaces;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * setter de l'identifiant de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public void setIdCar(long myIdCar) {
-		this.idCar = myIdCar;	
+		this.idCar = myIdCar;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * setter de l'utilisateur de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public void setUser(User myUser) {
 		this.basicSetUser(myUser);
 		myUser.basicSetCar(this);
-			
+
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * unsetter de nombre de places
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetNbrPlaces() {
-		this.nbrPlaces = 0;	
+		this.nbrPlaces = 0;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * unsetter de l'identifiant de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetIdCar() {
-		this.idCar = 0L;	
+		this.idCar = 0L;
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * unsetter de l'utilisateur de la voiture
+	 * 
+	 * 
+	 * 
 	 */
 	public void unsetUser() {
 		if (this.user == null)
 			return;
 		User olduser = this.user;
 		this.user = null;
-		olduser.unsetCar();	
+		olduser.unsetCar();
 	}
-	
-}
 
+}
