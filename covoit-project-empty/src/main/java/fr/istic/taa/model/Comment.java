@@ -10,7 +10,7 @@ import java.util.HashSet;
  */
  
 @javax.persistence.Entity 
-public class Participation
+public class Comment
 {
 	/**
 	 * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ public class Participation
 	 */
 	 
 	@javax.persistence.Column(nullable = false) 
-	protected long idEvent;
+	protected long idComment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -30,7 +30,7 @@ public class Participation
 	 */
 	 
 	@javax.persistence.Column(nullable = false) 
-	protected long idUser;
+	protected String comment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -39,8 +39,9 @@ public class Participation
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "participation") 
-	protected Set<Event> event;
+	@javax.persistence.ManyToOne 
+	@javax.persistence.JoinColumn(nullable = false) 
+	protected Event event;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,8 +50,8 @@ public class Participation
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "participation") 
-	protected Set<User> participant;
+	@javax.persistence.ManyToMany(mappedBy = "comment") 
+	protected Set<User> user;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,7 +68,7 @@ public class Participation
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public Participation(){
+	public Comment(){
 		super();
 	}
 
@@ -77,8 +78,17 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public long getIdEvent() {
-		return this.idEvent;	
+	public void basicSetEvent(Event myEvent) {
+		if (this.event != myEvent) {
+			if (myEvent != null){
+				if (this.event != myEvent) {
+					Event oldevent = this.event;
+					this.event = myEvent;
+					if (oldevent != null)
+						oldevent.removeComment(this);
+				}
+			}
+		}	
 	}
 	
 	/**
@@ -87,8 +97,8 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public long getIdUser() {
-		return this.idUser;	
+	public long getIdComment() {
+		return this.idComment;	
 	}
 	
 	/**
@@ -97,24 +107,31 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Event> getEvent() {
-		if(this.event == null) {
-				this.event = new HashSet<Event>();
+	public String getComment() {
+		return this.comment;	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public Event getEvent() {
+		return this.event;	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public Set<User> getUser() {
+		if(this.user == null) {
+				this.user = new HashSet<User>();
 		}
-		return (Set<Event>) this.event;	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public Set<User> getParticipant() {
-		if(this.participant == null) {
-				this.participant = new HashSet<User>();
-		}
-		return (Set<User>) this.participant;	
+		return (Set<User>) this.user;	
 	}
 	
 	/**
@@ -133,12 +150,12 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void addAllEvent(Set<Event> newEvent) {
-		if (this.event == null) {
-			this.event = new HashSet<Event>();
+	public void addAllUser(Set<User> newUser) {
+		if (this.user == null) {
+			this.user = new HashSet<User>();
 		}
-		for (Event tmp : newEvent)
-			tmp.setParticipation(this);
+		for (User tmp : newUser)
+			tmp.addComment(this);
 			
 	}
 	
@@ -148,27 +165,12 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void addAllParticipant(Set<User> newParticipant) {
-		if (this.participant == null) {
-			this.participant = new HashSet<User>();
-		}
-		for (User tmp : newParticipant)
-			tmp.setParticipation(this);
-			
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeAllEvent(Set<Event> newEvent) {
-		if(this.event == null) {
+	public void removeAllUser(Set<User> newUser) {
+		if(this.user == null) {
 			return;
 		}
 		
-		this.event.removeAll(newEvent);	
+		this.user.removeAll(newUser);	
 	}
 	
 	/**
@@ -177,12 +179,44 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void removeAllParticipant(Set<User> newParticipant) {
-		if(this.participant == null) {
-			return;
+	public void setIdComment(long myIdComment) {
+		this.idComment = myIdComment;	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void setComment(String myComment) {
+		this.comment = myComment;	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void setEvent(Event myEvent) {
+		this.basicSetEvent(myEvent);
+		myEvent.addComment(this);	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void addUser(User newUser) {
+		if(this.user == null) {
+			this.user = new HashSet<User>();
 		}
 		
-		this.participant.removeAll(newParticipant);	
+		if (this.user.add(newUser))
+			newUser.addComment(this);	
 	}
 	
 	/**
@@ -191,8 +225,8 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void setIdEvent(long myIdEvent) {
-		this.idEvent = myIdEvent;	
+	public void unsetIdComment() {
+		this.idComment = 0L;	
 	}
 	
 	/**
@@ -201,8 +235,8 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void setIdUser(long myIdUser) {
-		this.idUser = myIdUser;	
+	public void unsetComment() {
+		this.comment = "";	
 	}
 	
 	/**
@@ -211,13 +245,12 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void addEvent(Event newEvent) {
-		if(this.event == null) {
-			this.event = new HashSet<Event>();
-		}
-		
-		if (this.event.add(newEvent))
-			newEvent.basicSetParticipation(this);	
+	public void unsetEvent() {
+		if (this.event == null)
+			return;
+		Event oldevent = this.event;
+		this.event = null;
+		oldevent.removeComment(this);	
 	}
 	
 	/**
@@ -226,62 +259,12 @@ public class Participation
 	 * @generated
 	 * @ordered
 	 */
-	public void addParticipant(User newParticipant) {
-		if(this.participant == null) {
-			this.participant = new HashSet<User>();
-		}
-		
-		if (this.participant.add(newParticipant))
-			newParticipant.basicSetParticipation(this);	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetIdEvent() {
-		this.idEvent = 0L;	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetIdUser() {
-		this.idUser = 0L;	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeEvent(Event oldEvent) {
-		if(this.event == null)
+	public void removeUser(User oldUser) {
+		if(this.user == null)
 			return;
 		
-		if (this.event.remove(oldEvent))
-			oldEvent.unsetParticipation();
-			
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeParticipant(User oldParticipant) {
-		if(this.participant == null)
-			return;
-		
-		if (this.participant.remove(oldParticipant))
-			oldParticipant.unsetParticipation();
+		if (this.user.remove(oldUser))
+			oldUser.removeComment(this);
 			
 	}
 	
