@@ -1,71 +1,70 @@
 package fr.istic.taa.model;
-import java.util.Set;
+import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->
- * @generated
  */
  
-@javax.persistence.Entity 
-public class Participation
+@Entity 
+public class Participation implements Serializable
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * 
 	 */
+	private static final long serialVersionUID = 7400709297340150637L;
+
+	@EmbeddedId
+	@AttributeOverrides({
+	@AttributeOverride(name="idEvent", column=@Column(name="idEvent") ),
+	@AttributeOverride(name="idUser", column=@Column(name="idUser") )
+	})
 	 
-	@javax.persistence.Column(nullable = false) 
-	protected long idEvent;
+	@Column(nullable = false) 
+	private long idEvent;
+	
+	@Column(nullable = false) 
+	private long idUser;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
-	protected long idUser;
+	@OneToMany(mappedBy = "participation") 
+	private Set<Event> event;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.OneToMany(mappedBy = "participation") 
-	protected Set<Event> event;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "participation") 
+	@OneToMany(mappedBy = "participation") 
 	protected Set<User> participant;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
-	protected final Long id = 0L;
+
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
+
 	 */
 	public Participation(){
 		super();
@@ -74,9 +73,12 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getIdEvent() {
 		return this.idEvent;	
 	}
@@ -84,8 +86,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public long getIdUser() {
 		return this.idUser;	
@@ -94,8 +96,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public Set<Event> getEvent() {
 		if(this.event == null) {
@@ -107,8 +109,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public Set<User> getParticipant() {
 		if(this.participant == null) {
@@ -117,21 +119,12 @@ public class Participation
 		return (Set<User>) this.participant;	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;	
-	}
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void addAllEvent(Set<Event> newEvent) {
 		if (this.event == null) {
@@ -145,8 +138,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void addAllParticipant(Set<User> newParticipant) {
 		if (this.participant == null) {
@@ -160,8 +153,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void removeAllEvent(Set<Event> newEvent) {
 		if(this.event == null) {
@@ -174,8 +167,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void removeAllParticipant(Set<User> newParticipant) {
 		if(this.participant == null) {
@@ -188,8 +181,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void setIdEvent(long myIdEvent) {
 		this.idEvent = myIdEvent;	
@@ -198,8 +191,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void setIdUser(long myIdUser) {
 		this.idUser = myIdUser;	
@@ -208,8 +201,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void addEvent(Event newEvent) {
 		if(this.event == null) {
@@ -223,8 +216,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void addParticipant(User newParticipant) {
 		if(this.participant == null) {
@@ -238,8 +231,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void unsetIdEvent() {
 		this.idEvent = 0L;	
@@ -248,8 +241,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void unsetIdUser() {
 		this.idUser = 0L;	
@@ -258,8 +251,8 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+
+
 	 */
 	public void removeEvent(Event oldEvent) {
 		if(this.event == null)
@@ -273,8 +266,6 @@ public class Participation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
 	 */
 	public void removeParticipant(User oldParticipant) {
 		if(this.participant == null)
