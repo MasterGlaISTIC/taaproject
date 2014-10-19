@@ -1,5 +1,10 @@
 package fr.istic.taa.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -7,7 +12,7 @@ package fr.istic.taa.model;
  * @generated
  */
  
-@javax.persistence.Entity 
+@Entity 
 public class Car
 {
 	/**
@@ -17,7 +22,7 @@ public class Car
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected int nbrPlaces;
 
 	/**
@@ -27,7 +32,7 @@ public class Car
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected long idCar;
 
 	/**
@@ -37,7 +42,7 @@ public class Car
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToOne(mappedBy = "car") 
+	@OneToOne(mappedBy = "car") 
 	protected User user;
 
 	/**
@@ -46,8 +51,8 @@ public class Car
 	 * @generated
 	 * @ordered
 	 */
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
+	@Id 
+	@Column(nullable = false) 
 	protected final Long id = 0L;
 
 	/**

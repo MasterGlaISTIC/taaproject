@@ -1,7 +1,16 @@
 package fr.istic.taa.model;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -10,7 +19,7 @@ import java.util.Date;
  * @generated
  */
  
-@javax.persistence.Entity 
+@Entity 
 public class Event
 {
 	/**
@@ -20,7 +29,7 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected long idEvent;
 
 	/**
@@ -30,7 +39,7 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected String adresse;
 
 	/**
@@ -40,7 +49,7 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected String name;
 
 	/**
@@ -50,8 +59,8 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Temporal(javax.persistence.TemporalType.DATE) 
-	@javax.persistence.Column(nullable = false) 
+	@Temporal(TemporalType.DATE) 
+	@Column(nullable = false) 
 	protected Date date;
 
 	/**
@@ -61,7 +70,7 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "event") 
+	@OneToMany(mappedBy = "event") 
 	protected Set<User> createur;
 
 	/**
@@ -71,7 +80,7 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "event") 
+	@OneToMany(mappedBy = "event") 
 	protected Set<Comment> comment;
 
 	/**
@@ -81,8 +90,8 @@ public class Event
 	 * @ordered
 	 */
 	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
+	@ManyToOne 
+	@JoinColumn(nullable = false) 
 	protected Participation participation;
 
 	/**
@@ -91,8 +100,8 @@ public class Event
 	 * @generated
 	 * @ordered
 	 */
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
+	@Id 
+	@Column(nullable = false) 
 	protected final Long id = 0L;
 
 	/**

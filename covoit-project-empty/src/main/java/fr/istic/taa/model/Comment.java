@@ -1,6 +1,13 @@
 package fr.istic.taa.model;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -9,7 +16,7 @@ import java.util.HashSet;
  * @generated
  */
  
-@javax.persistence.Entity 
+@Entity 
 public class Comment
 {
 	/**
@@ -19,7 +26,7 @@ public class Comment
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected long idComment;
 
 	/**
@@ -29,7 +36,7 @@ public class Comment
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Column(nullable = false) 
+	@Column(nullable = false) 
 	protected String comment;
 
 	/**
@@ -39,8 +46,8 @@ public class Comment
 	 * @ordered
 	 */
 	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
+	@ManyToOne 
+	@JoinColumn(nullable = false) 
 	protected Event event;
 
 	/**
@@ -50,7 +57,7 @@ public class Comment
 	 * @ordered
 	 */
 	 
-	@javax.persistence.ManyToMany(mappedBy = "comment") 
+	@ManyToMany(mappedBy = "comment") 
 	protected Set<User> user;
 
 	/**
@@ -59,8 +66,8 @@ public class Comment
 	 * @generated
 	 * @ordered
 	 */
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
+	@Id 
+	@Column(nullable = false) 
 	protected final Long id = 0L;
 
 	/**
