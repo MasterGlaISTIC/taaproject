@@ -1,4 +1,5 @@
 package fr.istic.taa.model;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -9,34 +10,31 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 /**
  * 
  * 
  * 
  */
- 
-@Entity 
-public class Comment implements Serializable
-{
+
+@Entity
+public class Comment implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 Attribut qui représente l'identifiant du commentaire
+	 * Attribut qui représente l'identifiant du commentaire
 	 */
-	 
+
 	@Column(nullable = false)
 	private long idComment;
 
 	/**
-	 Attribut qui représente le vrai commentaire
+	 * Attribut qui représente le vrai commentaire
 	 * 
 	 */
-	 
-	 
+
 	private String comment;
 
 	/**
@@ -44,25 +42,40 @@ public class Comment implements Serializable
 	 * 
 	 * 
 	 */
-	 
-	@ManyToOne 
-	@JoinColumn(nullable = false) 
+
+	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Event event;
 
 	/**
-	 L'utilisateur qui a poser le commentaire
+	 * L'utilisateur qui a poser le commentaire
 	 */
-	 
-	@ManyToOne 
-	protected User user;
 
+	@ManyToOne
+	protected User user;
 
 	/**
 	 * constructeur par defaut de la classe commentaire
 	 * 
 	 */
-	public Comment(){
+	public Comment() {
 		super();
+	}
+
+	/**
+	 *
+	 */
+	public void basicSetUser(User myUser) {
+		if (this.user != myUser) {
+			if (myUser != null) {
+				if (this.user != myUser) {
+					User olduser = this.user;
+					this.user = myUser;
+					if (olduser != null)
+						olduser.removeComment(this);
+				}
+			}
+		}
 	}
 
 	/**
@@ -73,7 +86,7 @@ public class Comment implements Serializable
 	 */
 	public void basicSetEvent(Event myEvent) {
 		if (this.event != myEvent) {
-			if (myEvent != null){
+			if (myEvent != null) {
 				if (this.event != myEvent) {
 					Event oldevent = this.event;
 					this.event = myEvent;
@@ -81,22 +94,22 @@ public class Comment implements Serializable
 						oldevent.removeComment(this);
 				}
 			}
-		}	
+		}
 	}
-	
+
 	/**
 	 * 
 	 * 
 	 * 
 	 * 
 	 */
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-		public long getIdComment() {
-		return this.idComment;	
+	public long getIdComment() {
+		return this.idComment;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -104,9 +117,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public String getComment() {
-		return this.comment;	
+		return this.comment;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -114,9 +127,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public Event getEvent() {
-		return this.event;	
+		return this.event;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -124,13 +137,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public User getUser() {
-		return this.user;	
+		return this.user;
 	}
-	
 
-	
-
-	
 	/**
 	 * 
 	 * 
@@ -138,9 +147,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public void setIdComment(long myIdComment) {
-		this.idComment = myIdComment;	
+		this.idComment = myIdComment;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -148,9 +157,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public void setComment(String myComment) {
-		this.comment = myComment;	
+		this.comment = myComment;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -159,11 +168,14 @@ public class Comment implements Serializable
 	 */
 	public void setEvent(Event myEvent) {
 		this.basicSetEvent(myEvent);
-		myEvent.addComment(this);	
+		myEvent.addComment(this);
 	}
-	
 
-	
+	public void setUser(User myUser) {
+		this.basicSetUser(myUser);
+		myUser.addComment(this);
+	}
+
 	/**
 	 * 
 	 * 
@@ -171,9 +183,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public void unsetIdComment() {
-		this.idComment = 0L;	
+		this.idComment = 0L;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -181,9 +193,9 @@ public class Comment implements Serializable
 	 * 
 	 */
 	public void unsetComment() {
-		this.comment = "";	
+		this.comment = "";
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -195,9 +207,15 @@ public class Comment implements Serializable
 			return;
 		Event oldevent = this.event;
 		this.event = null;
-		oldevent.removeComment(this);	
+		oldevent.removeComment(this);
 	}
-	
-	
-}
 
+	public void unsetUser() {
+		if (this.user == null)
+			return;
+		User olduser = this.user;
+		this.user = null;
+		olduser.removeComment(this);
+	}
+
+}
