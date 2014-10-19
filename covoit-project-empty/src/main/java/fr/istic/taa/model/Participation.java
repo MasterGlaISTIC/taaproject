@@ -15,16 +15,13 @@ import javax.persistence.OneToMany;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * 
  */
  
 @Entity 
 public class Participation implements Serializable
 {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 7400709297340150637L;
 
 	@EmbeddedId
@@ -39,42 +36,23 @@ public class Participation implements Serializable
 	@Column(nullable = false) 
 	private long idUser;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
-	 */
-	 
 	@OneToMany(mappedBy = "participation") 
 	private Set<Event> event;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
-	 */
-	 
 	@OneToMany(mappedBy = "participation") 
 	protected Set<User> participant;
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
+	 *
 	 */
 	public Participation(){
 		super();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	
 	@Id 
@@ -84,20 +62,14 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public long getIdUser() {
 		return this.idUser;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 *
 	 */
 	public Set<Event> getEvent() {
 		if(this.event == null) {
@@ -107,10 +79,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public Set<User> getParticipant() {
 		if(this.participant == null) {
@@ -121,10 +90,7 @@ public class Participation implements Serializable
 	
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void addAllEvent(Set<Event> newEvent) {
 		if (this.event == null) {
@@ -136,10 +102,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void addAllParticipant(Set<User> newParticipant) {
 		if (this.participant == null) {
@@ -151,10 +114,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void removeAllEvent(Set<Event> newEvent) {
 		if(this.event == null) {
@@ -165,10 +125,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void removeAllParticipant(Set<User> newParticipant) {
 		if(this.participant == null) {
@@ -179,30 +136,21 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void setIdEvent(long myIdEvent) {
 		this.idEvent = myIdEvent;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void setIdUser(long myIdUser) {
 		this.idUser = myIdUser;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void addEvent(Event newEvent) {
 		if(this.event == null) {
@@ -214,10 +162,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void addParticipant(User newParticipant) {
 		if(this.participant == null) {
@@ -229,30 +174,21 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void unsetIdEvent() {
 		this.idEvent = 0L;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void unsetIdUser() {
 		this.idUser = 0L;	
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-
-
+	 * 
 	 */
 	public void removeEvent(Event oldEvent) {
 		if(this.event == null)
@@ -264,8 +200,7 @@ public class Participation implements Serializable
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * 
 	 */
 	public void removeParticipant(User oldParticipant) {
 		if(this.participant == null)
