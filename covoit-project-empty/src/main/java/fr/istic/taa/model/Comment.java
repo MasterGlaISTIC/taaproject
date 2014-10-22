@@ -27,6 +27,8 @@ public class Comment implements Serializable {
 	 * Attribut qui représente l'identifiant du commentaire
 	 */
 
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(nullable = false)
 	private long idComment;
 
@@ -44,7 +46,7 @@ public class Comment implements Serializable {
 	 */
 
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(name = "idEvent", updatable = false) 
 	private Event event;
 
 	/**
@@ -104,8 +106,7 @@ public class Comment implements Serializable {
 	 * 
 	 */
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public long getIdComment() {
 		return this.idComment;
 	}

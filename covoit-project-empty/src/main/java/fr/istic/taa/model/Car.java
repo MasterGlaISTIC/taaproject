@@ -2,6 +2,7 @@ package fr.istic.taa.model;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,8 @@ public class Car implements Serializable {
 	 * 
 	 * 
 	 */
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(nullable = false)
 	private long idCar;
 
@@ -89,8 +92,6 @@ public class Car implements Serializable {
 	 * 
 	 */
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getIdCar() {
 		return this.idCar;
 	}

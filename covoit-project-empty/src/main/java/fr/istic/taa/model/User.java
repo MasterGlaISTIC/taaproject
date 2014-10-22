@@ -2,11 +2,15 @@ package fr.istic.taa.model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -24,6 +28,10 @@ public class User implements Serializable
 	private  String location;
 	private String email;
 	
+	private String name;
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(nullable = false) 
 	private long idUser;
  
@@ -33,14 +41,15 @@ public class User implements Serializable
 
 	
 	@ManyToOne 
-	@JoinColumn(nullable = false) 
+	@JoinColumn(name = "idEvent", updatable = false) 
 	private Event event;
 
-	@ManyToMany 
+	@OneToMany 
 	private Set<Comment> comment;
 
 	
 	@ManyToOne 
+//	@JoinColumn(name = "idUser", nullable = false, updatable = false) 
 	private Participation participation;
 
 	/**
@@ -88,10 +97,10 @@ public class User implements Serializable
 		if (this.participation != myParticipation) {
 			if (myParticipation != null){
 				if (this.participation != myParticipation) {
-					Participation oldparticipation = this.participation;
+					//Participation oldparticipation = this.participation;
 					this.participation = myParticipation;
-					if (oldparticipation != null)
-						oldparticipation.removeParticipant(this);
+					/*if (oldparticipation != null)
+						oldparticipation.removeParticipant(this);*/
 				}
 			}
 		}	
@@ -161,6 +170,14 @@ public class User implements Serializable
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 *
 	 */
@@ -237,7 +254,7 @@ public class User implements Serializable
 	 */
 	public void setParticipation(Participation myParticipation) {
 		this.basicSetParticipation(myParticipation);
-		myParticipation.addParticipant(this);	
+		//myParticipation.addParticipant(this);	
 	}
 	
 	/**
@@ -301,9 +318,9 @@ public class User implements Serializable
 	public void unsetParticipation() {
 		if (this.participation == null)
 			return;
-		Participation oldparticipation = this.participation;
+		//Participation oldparticipation = this.participation;
 		this.participation = null;
-		oldparticipation.removeParticipant(this);	
+		//oldparticipation.removeParticipant(this);	
 	}
 	
 }

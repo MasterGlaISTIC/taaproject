@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -36,7 +35,8 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	 
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(nullable = false)
 	private long idEvent;
 
@@ -99,7 +99,7 @@ public class Event implements Serializable
 	 */
 	 
 	@ManyToOne 
-	@JoinColumn(nullable = false) 
+//	@JoinColumn(name = "idEvent", updatable = false)
 	private Participation participation;
 
 	/**
@@ -129,10 +129,12 @@ public class Event implements Serializable
 		if (this.participation != myParticipation) {
 			if (myParticipation != null){
 				if (this.participation != myParticipation) {
-					Participation oldparticipation = this.participation;
+					//Participation oldparticipation = this.participation;
 					this.participation = myParticipation;
+					/*
 					if (oldparticipation != null)
 						oldparticipation.removeEvent(this);
+						*/
 				}
 			}
 		}	
@@ -144,8 +146,6 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getIdEvent() {
 		return this.idEvent;	
 	}
@@ -354,7 +354,7 @@ public class Event implements Serializable
 	 */
 	public void setParticipation(Participation myParticipation) {
 		this.basicSetParticipation(myParticipation);
-		myParticipation.addEvent(this);	
+		//myParticipation.addEvent(this);	
 	}
 	
 	/**
@@ -436,9 +436,9 @@ public class Event implements Serializable
 	public void unsetParticipation() {
 		if (this.participation == null)
 			return;
-		Participation oldparticipation = this.participation;
+		//Participation oldparticipation = this.participation;
 		this.participation = null;
-		oldparticipation.removeEvent(this);	
+//		/oldparticipation.removeEvent(this);	
 	}
 	
 }
