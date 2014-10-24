@@ -98,8 +98,7 @@ public class Event implements Serializable
 	 * 
 	 */
 	 
-	@ManyToOne 
-//	@JoinColumn(name = "idEvent", updatable = false)
+	@ManyToOne
 	private Participation participation;
 
 	/**

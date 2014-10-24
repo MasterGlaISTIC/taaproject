@@ -46,7 +46,6 @@ public class Comment implements Serializable {
 	 */
 
 	@ManyToOne
-	@JoinColumn(name = "idEvent", updatable = false) 
 	private Event event;
 
 	/**

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 public class GenericDaoImpl<T, PK extends Serializable> implements
 		GenericDao<T, PK> {
@@ -27,13 +28,15 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 	}
 
 	@Override
+	@Transactional
 	public T create(T t) {
+		System.out.println("Persist "+t.toString());
 		this.entityManager.persist(t);
 		return t;
 	}
 
 	@Override
-	public T read(PK id) {
+		public T read(PK id) {
 		return this.entityManager.find(entityClass, id);
 	}
 

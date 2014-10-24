@@ -3,12 +3,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,31 +23,28 @@ public class User implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	
-	private  String location;
+	private String location;
 	private String email;
 	
 	private String name;
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(nullable = false) 
 	private long idUser;
  
 	
-	@OneToOne 
+	@OneToOne(optional=true)
 	private Car car;
 
 	
-	@ManyToOne 
-	@JoinColumn(name = "idEvent", updatable = false) 
+	@ManyToOne(optional=true)
 	private Event event;
 
-	@OneToMany 
+	@OneToMany(mappedBy="user", orphanRemoval=true)
 	private Set<Comment> comment;
 
 	
-	@ManyToOne 
-//	@JoinColumn(name = "idUser", nullable = false, updatable = false) 
+	@ManyToOne(optional=true)
 	private Participation participation;
 
 	/**
@@ -58,6 +53,17 @@ public class User implements Serializable
 	public User(){
 		super();
 	}
+
+	
+
+	public User(String name, String email, String location) {
+		super();
+		this.location = location;
+		this.email = email;
+		this.name = name;
+	}
+
+
 
 	/**
 	 *  

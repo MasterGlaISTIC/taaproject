@@ -11,14 +11,16 @@ public class Main {
         
         InterfaceUserDao dao = new UserDAO();
          
-        User peter = new User();
-        peter.setName("Peter");
-        User nasta = new User();
-        nasta.setName("Nasta");
-         
+        User peter = new User("AMHACHI","m.amhachi@gmail.com","Rennes");
+           
+        
         dao.create(peter);
-        dao.create(nasta);
-         
+        
+        User amhachi = dao.read(1L);
+        amhachi.setEmail("m.amhachi@gmail.com");
+        dao.update(amhachi);
+        System.out.println(amhachi.getName());
+        
         List<User> users = dao.getAll();
         for (User person : users) {
             System.out.println(person);
