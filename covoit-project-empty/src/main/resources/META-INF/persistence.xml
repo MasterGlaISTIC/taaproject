@@ -57,11 +57,11 @@
 
 	<persistence-unit name="mysql">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>fr.istic.taa.model.Car</class>
-		<class>fr.istic.taa.model.Comment</class>
-		<class>fr.istic.taa.model.Event</class>
-		<class>fr.istic.taa.model.User</class>
-		<class>fr.istic.taa.model.Participation</class>
+		<class>fr.istic.taaproject.model.Car</class>
+		<class>fr.istic.taaproject.model.Comment</class>
+		<class>fr.istic.taaproject.model.Event</class>
+		<class>fr.istic.taaproject.model.User</class>
+		<class>fr.istic.taaproject.model.Participation</class>
 		<properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/taa" />

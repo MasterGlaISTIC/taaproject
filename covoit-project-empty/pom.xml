@@ -17,6 +17,17 @@
     </properties>
 
     <dependencies>
+    	<dependency>
+    		<groupId>fr.istic.taaproject</groupId>
+  			<artifactId>model</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
+    	
+    	<dependency>
+    		<groupId>fr.istic.taaproject</groupId>
+  			<artifactId>genericDAO</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-servlet</artifactId>
@@ -26,11 +37,6 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.6.Final</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

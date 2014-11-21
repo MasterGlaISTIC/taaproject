@@ -2,9 +2,9 @@ package fr.istic.taa.main;
 
 import java.util.List;
 
-import fr.istic.taa.dao.InterfaceUserDao;
-import fr.istic.taa.dao.UserDAO;
-import fr.istic.taa.model.User;
+import fr.istic.taaproject.genericDAO.InterfaceUserDao;
+import fr.istic.taaproject.genericDAO.UserDAO;
+import fr.istic.taaproject.model.User;
 
 public class Main {
 	public static void main(String[] args) {
