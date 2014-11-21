@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,9 +23,16 @@ public class User implements Serializable
 
 	
 	private String location;
+
+	//Login
 	private String email;
 	
+	//Mot de passe
+	private String passwd;
+	
 	private String name;
+
+	
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,15 +43,12 @@ public class User implements Serializable
 	private Car car;
 
 	
-	@ManyToOne(optional=true)
-	private Event event;
+//	@ManyToOne(optional=true)
+//	private Event event;
 
 	@OneToMany(mappedBy="user", orphanRemoval=true)
 	private Set<Comment> comment;
 
-	
-	@ManyToOne(optional=true)
-	private Participation participation;
 
 	/**
 	 * default constructor 
@@ -80,38 +83,23 @@ public class User implements Serializable
 		}	
 	}
 	
-	/**
-	 * 
-	 */
-	public void basicSetEvent(Event myEvent) {
-		if (this.event != myEvent) {
-			if (myEvent != null){
-				if (this.event != myEvent) {
-					Event oldevent = this.event;
-					this.event = myEvent;
-					if (oldevent != null)
-						oldevent.removeCreateur(this);
-				}
-			}
-		}	
-	}
-	
-	/**
-	 * 
-	 */
-	public void basicSetParticipation(Participation myParticipation) {
-		if (this.participation != myParticipation) {
-			if (myParticipation != null){
-				if (this.participation != myParticipation) {
-					//Participation oldparticipation = this.participation;
-					this.participation = myParticipation;
-					/*if (oldparticipation != null)
-						oldparticipation.removeParticipant(this);*/
-				}
-			}
-		}	
-	}
-	
+//	/**
+//	 * 
+//	 */
+//	public void basicSetEvent(Event myEvent) {
+//		if (this.event != myEvent) {
+//			if (myEvent != null){
+//				if (this.event != myEvent) {
+//					Event oldevent = this.event;
+//					this.event = myEvent;
+//					if (oldevent != null)
+//						oldevent.removeCreateur(this);
+//				}
+//			}
+//		}	
+//	}
+//	
+
 	/**
 	 * 
 	 */
@@ -154,9 +142,9 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public Event getEvent() {
-		return this.event;	
-	}
+//	public Event getEvent() {
+//		return this.event;	
+//	}
 	
 	/**
 	 * 
@@ -168,17 +156,30 @@ public class User implements Serializable
 		return (Set<Comment>) this.comment;	
 	}
 	
-	/**
-	 * 
-	 */
-	public Participation getParticipation() {
-		return this.participation;	
-	}
+
 	
 	
 	public String getName() {
 		return name;
 	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
+
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+
+
 
 	public void setName(String name) {
 		this.name = name;
@@ -238,11 +239,11 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public void setEvent(Event myEvent) {
-		this.basicSetEvent(myEvent);
-		myEvent.addCreateur(this);	
-	}
-	
+//	public void setEvent(Event myEvent) {
+//		this.basicSetEvent(myEvent);
+//		myEvent.addCreateur(this);	
+//	}
+//	
 	/**
 	 * 
 	 */
@@ -255,13 +256,7 @@ public class User implements Serializable
 			newComment.basicSetUser(this);	
 	}
 	
-	/**
-	 * 
-	 */
-	public void setParticipation(Participation myParticipation) {
-		this.basicSetParticipation(myParticipation);
-		//myParticipation.addParticipant(this);	
-	}
+
 	
 	/**
 	 * 
@@ -298,13 +293,13 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public void unsetEvent() {
-		if (this.event == null)
-			return;
-		Event oldevent = this.event;
-		this.event = null;
-		oldevent.removeCreateur(this);	
-	}
+//	public void unsetEvent() {
+//		if (this.event == null)
+//			return;
+//		Event oldevent = this.event;
+//		this.event = null;
+//		oldevent.removeCreateur(this);	
+//	}
 	
 	/**
 	 * 
@@ -318,16 +313,7 @@ public class User implements Serializable
 			
 	}
 	
-	/**
-	 *  
-	 */
-	public void unsetParticipation() {
-		if (this.participation == null)
-			return;
-		//Participation oldparticipation = this.participation;
-		this.participation = null;
-		//oldparticipation.removeParticipant(this);	
-	}
+
 	
 }
 

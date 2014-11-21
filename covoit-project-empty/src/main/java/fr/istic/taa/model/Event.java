@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -78,8 +77,7 @@ public class Event implements Serializable
 	 * 
 	 */
 	 
-	@OneToMany(mappedBy = "event") 
-	private Set<User> createur;
+	private User createur;
 
 	/**
 	 * 
@@ -91,60 +89,11 @@ public class Event implements Serializable
 	@OneToMany(mappedBy = "event") 
 	private Set<Comment> comment;
 
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	 
-	@ManyToOne
-	private Participation participation;
-
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-
-
-	/**
-	 * 
-	 * 
-	 * 
-	 */
 	public Event(){
 		super();
 	}
 
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	public void basicSetParticipation(Participation myParticipation) {
-		if (this.participation != myParticipation) {
-			if (myParticipation != null){
-				if (this.participation != myParticipation) {
-					//Participation oldparticipation = this.participation;
-					this.participation = myParticipation;
-					/*
-					if (oldparticipation != null)
-						oldparticipation.removeEvent(this);
-						*/
-				}
-			}
-		}	
-	}
 	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
 	public long getIdEvent() {
 		return this.idEvent;	
 	}
@@ -185,12 +134,12 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	public Set<User> getCreateur() {
-		if(this.createur == null) {
-				this.createur = new HashSet<User>();
-		}
-		return (Set<User>) this.createur;	
-	}
+//	public Set<User> getCreateur() {
+//		if(this.createur == null) {
+//				this.createur = new HashSet<User>();
+//		}
+//		return (Set<User>) this.createur;	
+//	}
 	
 	/**
 	 * 
@@ -205,32 +154,15 @@ public class Event implements Serializable
 		return (Set<Comment>) this.comment;	
 	}
 	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	public Participation getParticipation() {
-		return this.participation;	
-	}
-	
 
-	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	public void addAllCreateur(Set<User> newCreateur) {
-		if (this.createur == null) {
-			this.createur = new HashSet<User>();
-		}
-		for (User tmp : newCreateur)
-			tmp.setEvent(this);
-			
-	}
+//	public void addAllCreateur(Set<User> newCreateur) {
+//		if (this.createur == null) {
+//			this.createur = new HashSet<User>();
+//		}
+//		for (User tmp : newCreateur)
+//			tmp.setEvent(this);
+//			
+//	}
 	
 	/**
 	 * 
@@ -253,13 +185,13 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	public void removeAllCreateur(Set<User> newCreateur) {
-		if(this.createur == null) {
-			return;
-		}
-		
-		this.createur.removeAll(newCreateur);	
-	}
+//	public void removeAllCreateur(Set<User> newCreateur) {
+//		if(this.createur == null) {
+//			return;
+//		}
+//		
+//		this.createur.removeAll(newCreateur);	
+//	}
 	
 	/**
 	 * 
@@ -321,15 +253,25 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	public void addCreateur(User newCreateur) {
-		if(this.createur == null) {
-			this.createur = new HashSet<User>();
-		}
-		
-		if (this.createur.add(newCreateur))
-			newCreateur.basicSetEvent(this);	
-	}
+//	public void addCreateur(User newCreateur) {
+//		if(this.createur == null) {
+//			this.createur = new HashSet<User>();
+//		}
+//		
+//		if (this.createur.add(newCreateur))
+//			newCreateur.basicSetEvent(this);	
+//	}
 	
+	public User getCreateur() {
+		return createur;
+	}
+
+
+	public void setCreateur(User createur) {
+		this.createur = createur;
+	}
+
+
 	/**
 	 * 
 	 * 
@@ -351,18 +293,7 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	public void setParticipation(Participation myParticipation) {
-		this.basicSetParticipation(myParticipation);
-		//myParticipation.addEvent(this);	
-	}
-	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	public void unsetIdEvent() {
+public void unsetIdEvent() {
 		this.idEvent = 0L;	
 	}
 	
@@ -402,14 +333,14 @@ public class Event implements Serializable
 	 * 
 	 * 
 	 */
-	public void removeCreateur(User oldCreateur) {
-		if(this.createur == null)
-			return;
-		
-		if (this.createur.remove(oldCreateur))
-			oldCreateur.unsetEvent();
-			
-	}
+//	public void removeCreateur(User oldCreateur) {
+//		if(this.createur == null)
+//			return;
+//		
+//		if (this.createur.remove(oldCreateur))
+//			oldCreateur.unsetEvent();
+//			
+//	}
 	
 	/**
 	 * 
@@ -426,19 +357,6 @@ public class Event implements Serializable
 			
 	}
 	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	public void unsetParticipation() {
-		if (this.participation == null)
-			return;
-		//Participation oldparticipation = this.participation;
-		this.participation = null;
-//		/oldparticipation.removeEvent(this);	
-	}
-	
+
 }
 
