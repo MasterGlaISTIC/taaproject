@@ -1,4 +1,4 @@
-package fr.istic.taa.main;
+package fr.istic.taaproject.service;
 
 import java.util.List;
 

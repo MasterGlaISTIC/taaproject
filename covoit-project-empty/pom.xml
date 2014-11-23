@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.inria.taa</groupId>
-    <artifactId>covoit</artifactId>
+    <groupId>fr.istic.taaproject</groupId>
+    <artifactId>covoit-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>covoit</name>
+    <name>covoit-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -80,7 +80,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <tag>covoit</tag>
+                    <tag>covoit-service</tag>
                     <username>leiko</username>
                     <password>potato42</password>
                 </configuration>
