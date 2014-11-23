@@ -2,24 +2,29 @@ package fr.istic.taaproject.service;
 
 import java.util.List;
 
-import fr.istic.taaproject.genericDAO.InterfaceUserDao;
-import fr.istic.taaproject.genericDAO.UserDAO;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import fr.istic.taaproject.model.User;
 
 public class Main {
+
 	public static void main(String[] args) {
-        
-        InterfaceUserDao dao = new UserDAO();
-        
-        
-               
-       //User yacine = dao.read(1L);
-       //System.out.println(yacine.getName());
-        System.out.println("------- ALL USERS ----------");
-        List<User> users = dao.getAll();
-        for (User person : users) {
-            System.out.println(person.getName());
-        }
-        
-    }
+		/* Init Spring Default Config */
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+				new String[] { "client-beans.xml" });
+		IUserService userService = (IUserService) context.getBean("userService");
+		
+		User developpeur = new User("Developer", "developer@developer.com",
+				"Rennes");
+		
+		System.out.println("------- ALL USERS ----------");
+		//Service
+		//userService.createUser(developpeur);
+		List<User> users = userService.getUsers();
+		
+		for (User person : users) {
+			System.out.println(person.getName());
+		}
+
+	}
 }

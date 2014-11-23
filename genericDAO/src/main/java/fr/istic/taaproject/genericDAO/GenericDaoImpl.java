@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -18,6 +19,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 
 	@PersistenceContext
 	protected EntityManager entityManager = factory.createEntityManager();
+	
+	EntityTransaction transaction = entityManager.getTransaction();
 
 	@SuppressWarnings("unchecked")
 	public GenericDaoImpl() {
@@ -29,8 +32,10 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 
 	@Transactional
 	public T create(T t) {
-		System.out.println("Persist "+t.toString());
+		transaction.begin();
 		this.entityManager.persist(t);
+		transaction.commit();
+		
 		return t;
 	}
 
