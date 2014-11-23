@@ -1,7 +1,5 @@
 package fr.istic.taaproject.service;
 
-import java.util.List;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import fr.istic.taaproject.model.User;
@@ -20,11 +18,11 @@ public class Main {
 		System.out.println("------- ALL USERS ----------");
 		//Service
 		//userService.createUser(developpeur);
-		List<User> users = userService.getUsers();
-		
-		for (User person : users) {
-			System.out.println(person.getName());
-		}
+//		List<User> users = userService.getUsers();
+//		
+//		for (User person : users) {
+//			System.out.println(person.getName());
+//		}
 
 	}
 }

@@ -272,6 +272,15 @@ public class User implements Serializable
 		this.email = "";	
 	}
 	
+	@Override
+	public String toString() {
+		return "User [location=" + location + ", email=" + email + ", name="
+				+ name + ", idUser=" + idUser + ", car=" + car + ", comment="
+				+ comment + "]";
+	}
+
+
+
 	/**
 	 * 
 	 */
