@@ -69,10 +69,10 @@ public class Comment implements Serializable {
 		if (this.user != myUser) {
 			if (myUser != null) {
 				if (this.user != myUser) {
-					User olduser = this.user;
+//					User olduser = this.user;
 					this.user = myUser;
-					if (olduser != null)
-						olduser.removeComment(this);
+//					if (olduser != null)
+//						olduser.removeComment(this);
 				}
 			}
 		}
@@ -172,7 +172,7 @@ public class Comment implements Serializable {
 
 	public void setUser(User myUser) {
 		this.basicSetUser(myUser);
-		myUser.addComment(this);
+//		myUser.addComment(this);
 	}
 
 	/**
@@ -212,9 +212,9 @@ public class Comment implements Serializable {
 	public void unsetUser() {
 		if (this.user == null)
 			return;
-		User olduser = this.user;
-		this.user = null;
-		olduser.removeComment(this);
+//		User olduser = this.user;
+//		this.user = null;
+//		olduser.removeComment(this);
 	}
 
 }

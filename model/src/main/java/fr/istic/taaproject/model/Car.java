@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 
 @Entity
@@ -44,8 +43,8 @@ public class Car implements Serializable {
 	 * 
 	 */
 
-	@OneToOne(mappedBy = "car")
-	private User user;
+//	@OneToOne(mappedBy = "car")
+//	private User user;
 
 	/**
 	 * Constructeur par défault de la voiture
@@ -62,17 +61,17 @@ public class Car implements Serializable {
 	 * 
 	 * 
 	 */
-	public void basicSetUser(User myUser) {
-		if (this.user != myUser) {
-			if (myUser != null) {
-				User olduser = this.user;
-				this.user = myUser;
-				if (olduser != null)
-					olduser.unsetCar();
-
-			}
-		}
-	}
+//	public void basicSetUser(User myUser) {
+//		if (this.user != myUser) {
+//			if (myUser != null) {
+//				User olduser = this.user;
+//				this.user = myUser;
+//				if (olduser != null)
+//					olduser.unsetCar();
+//
+//			}
+//		}
+//	}
 
 	/**
 	 * getter de nombre de places
@@ -101,9 +100,9 @@ public class Car implements Serializable {
 	 * 
 	 * 
 	 */
-	public User getUser() {
-		return this.user;
-	}
+//	public User getUser() {
+//		return this.user;
+//	}
 
 	/**
 	 * setter de nombre de places
@@ -131,11 +130,11 @@ public class Car implements Serializable {
 	 * 
 	 * 
 	 */
-	public void setUser(User myUser) {
-		this.basicSetUser(myUser);
-		myUser.basicSetCar(this);
-
-	}
+//	public void setUser(User myUser) {
+//		this.basicSetUser(myUser);
+//		myUser.basicSetCar(this);
+//
+//	}
 
 	/**
 	 * unsetter de nombre de places
@@ -163,12 +162,12 @@ public class Car implements Serializable {
 	 * 
 	 * 
 	 */
-	public void unsetUser() {
-		if (this.user == null)
-			return;
-		User olduser = this.user;
-		this.user = null;
-		olduser.unsetCar();
-	}
+//	public void unsetUser() {
+//		if (this.user == null)
+//			return;
+//		User olduser = this.user;
+//		this.user = null;
+//		olduser.unsetCar();
+//	}
 
 }

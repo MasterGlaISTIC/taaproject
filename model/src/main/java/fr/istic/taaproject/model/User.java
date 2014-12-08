@@ -1,21 +1,17 @@
 package fr.istic.taaproject.model;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 
 /**
  * 
  */
  
-@Entity 
+@Entity
 public class User implements Serializable
 {
 
@@ -39,15 +35,11 @@ public class User implements Serializable
 	private long idUser;
  
 	
-	@OneToOne(optional=true)
 	private Car car;
 
 	
 //	@ManyToOne(optional=true)
 //	private Event event;
-
-	@OneToMany(mappedBy="user", orphanRemoval=true)
-	private Set<Comment> comment;
 
 
 	/**
@@ -74,10 +66,10 @@ public class User implements Serializable
 	public void basicSetCar(Car myCar) {
 		if (this.car != myCar) {
 			if (myCar != null){
-					Car oldcar = this.car;
+//					Car oldcar = this.car;
 					this.car = myCar;
-					if (oldcar != null)
-						oldcar.unsetUser();
+//					if (oldcar != null)
+//						oldcar.unsetUser();
 				
 			}
 		}	
@@ -149,12 +141,12 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public Set<Comment> getComment() {
-		if(this.comment == null) {
-				this.comment = new HashSet<Comment>();
-		}
-		return (Set<Comment>) this.comment;	
-	}
+//	public Set<Comment> getComment() {
+//		if(this.comment == null) {
+//				this.comment = new HashSet<Comment>();
+//		}
+//		return (Set<Comment>) this.comment;	
+//	}
 	
 
 	
@@ -175,9 +167,9 @@ public class User implements Serializable
 
 
 
-	public void setComment(Set<Comment> comment) {
-		this.comment = comment;
-	}
+//	public void setComment(Set<Comment> comment) {
+//		this.comment = comment;
+//	}
 
 
 
@@ -188,24 +180,24 @@ public class User implements Serializable
 	/**
 	 *
 	 */
-	public void addAllComment(Set<Comment> newComment) {
-		if (this.comment == null) {
-			this.comment = new HashSet<Comment>();
-		}
-		for (Comment tmp : newComment)
-			tmp.setUser(this);
-			
-	}
+//	public void addAllComment(Set<Comment> newComment) {
+//		if (this.comment == null) {
+//			this.comment = new HashSet<Comment>();
+//		}
+//		for (Comment tmp : newComment)
+//			tmp.setUser(this);
+//			
+//	}
 	
 	
-	public void removeAllComment(Set<Comment> newComment) {
-		if(this.comment == null) {
-			return;
-		}
-		
-		this.comment.removeAll(newComment);	
-	}
-	
+//	public void removeAllComment(Set<Comment> newComment) {
+//		if(this.comment == null) {
+//			return;
+//		}
+//		
+//		this.comment.removeAll(newComment);	
+//	}
+//	
 	/**
 	 * 
 	 */
@@ -232,7 +224,7 @@ public class User implements Serializable
 	 */
 	public void setCar(Car myCar) {
 		this.basicSetCar(myCar);
-		myCar.basicSetUser(this);
+//		myCar.basicSetUser(this);
 			
 	}
 	
@@ -247,14 +239,14 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public void addComment(Comment newComment) {
-		if(this.comment == null) {
-			this.comment = new HashSet<Comment>();
-		}
-		
-		if (this.comment.add(newComment))
-			newComment.basicSetUser(this);	
-	}
+//	public void addComment(Comment newComment) {
+//		if(this.comment == null) {
+//			this.comment = new HashSet<Comment>();
+//		}
+//		
+//		if (this.comment.add(newComment))
+//			newComment.basicSetUser(this);	
+//	}
 	
 
 	
@@ -272,12 +264,12 @@ public class User implements Serializable
 		this.email = "";	
 	}
 	
-	@Override
-	public String toString() {
-		return "User [location=" + location + ", email=" + email + ", name="
-				+ name + ", idUser=" + idUser + ", car=" + car + ", comment="
-				+ comment + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [location=" + location + ", email=" + email + ", name="
+//				+ name + ", idUser=" + idUser + ", car=" + car + ", comment="
+//				+ comment + "]";
+//	}
 
 
 
@@ -294,9 +286,9 @@ public class User implements Serializable
 	public void unsetCar() {
 		if (this.car == null)
 			return;
-		Car oldcar = this.car;
+//		Car oldcar = this.car;
 		this.car = null;
-		oldcar.unsetUser();	
+//		oldcar.unsetUser();	
 	}
 	
 	/**
@@ -313,14 +305,14 @@ public class User implements Serializable
 	/**
 	 * 
 	 */
-	public void removeComment(Comment oldComment) {
-		if(this.comment == null)
-			return;
-		
-		if (this.comment.remove(oldComment))
-			oldComment.unsetUser();
-			
-	}
+//	public void removeComment(Comment oldComment) {
+//		if(this.comment == null)
+//			return;
+//		
+//		if (this.comment.remove(oldComment))
+//			oldComment.unsetUser();
+//			
+//	}
 	
 
 	
