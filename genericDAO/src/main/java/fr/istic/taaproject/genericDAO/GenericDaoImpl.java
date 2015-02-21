@@ -51,7 +51,11 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 
 	public void delete(T t) {
 		t = this.entityManager.merge(t);
+		System.out.println("T = "+t);
+		transaction.begin();
 		this.entityManager.remove(t);
+		transaction.commit();
+		
 	}
 
 }

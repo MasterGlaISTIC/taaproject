@@ -26,6 +26,12 @@ public class User implements Serializable
 	//Mot de passe
 	private String passwd;
 	
+	@Override
+	public String toString() {
+		return "User [location=" + location + ", email=" + email + ", name=" + name + ", idUser=" + idUser + ", car="
+				+ car + "]";
+	}
+
 	private String name;
 
 	

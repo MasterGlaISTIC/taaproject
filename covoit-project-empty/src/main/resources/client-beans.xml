@@ -21,5 +21,10 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schema/jaxws.xsd">
 	</bean>
 
 	<bean id="userDao" class="fr.istic.taaproject.genericDAO.UserDAO" />
+	
+	<bean id="journeyService" class = "fr.istic.taaproject.service.JourneyService">
+	    <property name="eventDao" ref="eventDao"></property>
+	</bean>
+	<bean id="eventDao" class="fr.istic.taaproject.genericDAO.EventDAO"></bean>
 </beans>
 <!-- END SNIPPET: beans -->

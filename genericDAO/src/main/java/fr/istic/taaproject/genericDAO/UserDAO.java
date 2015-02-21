@@ -2,6 +2,7 @@ package fr.istic.taaproject.genericDAO;
 
 import java.io.Serializable;
 
+
 import java.util.List;
 
 import fr.istic.taaproject.model.User;
