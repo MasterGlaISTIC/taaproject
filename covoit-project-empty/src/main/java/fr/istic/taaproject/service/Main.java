@@ -16,7 +16,7 @@ public class Main {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "client-beans.xml" });
 		IUserService userService = (IUserService) context.getBean("userService");
-		ICarService carService = (ICarService) context.getBean("carService");
+		IVehiculeService carService = (IVehiculeService) context.getBean("vehiculeService");
 		
 		User developpeur = new User("Mohssine", "mohssine.amhachi@gmail.com",
 				"Rennes");
