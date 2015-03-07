@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import fr.istic.taaproject.model.Car;
 import fr.istic.taaproject.model.Event;
+import fr.istic.taaproject.model.User;
 
 public class Main {
 
@@ -13,20 +15,25 @@ public class Main {
 		@SuppressWarnings("resource")
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "client-beans.xml" });
-//		IUserService userService = (IUserService) context.getBean("userService");
+		IUserService userService = (IUserService) context.getBean("userService");
+		ICarService carService = (ICarService) context.getBean("carService");
+		
+		User developpeur = new User("Mohssine", "mohssine.amhachi@gmail.com",
+				"Rennes");
+		Car car = new Car(4);
+//		carService.createCar(car);
 //		
-//		User developpeur = new User("Developer", "developer@developer.com",
-//				"Rennes");
-//		
-//		System.out.println("------- ALL USERS ----------");
-//		//Service
-//		//userService.createUser(developpeur);
-//		//userService.deleteUser(7L);
-//		List<User> users = userService.getUsers();
-//		
-//		for (User person : users) {
-//			System.out.println(person);
-//		}
+//		developpeur.addCar(car);
+//		userService.createUser(developpeur);
+		
+		
+		System.out.println("------- ALL USERS ----------");
+
+		List<User> users = userService.getUsers();
+		
+		for (User person : users) {
+			System.out.println(person);
+		}
 
 		
 		IJourneysService journeyService =  (IJourneysService) context.getBean("journeyService");
