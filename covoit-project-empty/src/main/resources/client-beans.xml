@@ -26,5 +26,11 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schema/jaxws.xsd">
 	    <property name="eventDao" ref="eventDao"></property>
 	</bean>
 	<bean id="eventDao" class="fr.istic.taaproject.genericDAO.EventDAO"></bean>
+	
+	<!-- Cars service -->
+	<bean id="carService" class = "fr.istic.taaproject.service.CarService">
+	    <property name="carDao" ref="carDao"></property>
+	</bean>
+	<bean id="carDao" class="fr.istic.taaproject.genericDAO.CarDAO"></bean>
 </beans>
 <!-- END SNIPPET: beans -->
