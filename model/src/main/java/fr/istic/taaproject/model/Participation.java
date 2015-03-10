@@ -6,41 +6,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
-
 @Entity
 @IdClass(InfoPK.class)
 public class Participation implements Serializable {
 
 	private static final long serialVersionUID = 7400709297340150637L;
 
-	@Id long idUser;
+	@Id
+	long idUser;
 
-	@Id long idEvent;
+	@Id
+	long idEvent;
 
-//	@EmbeddedId
-//	protected InfoPK infoPK;
+	// @EmbeddedId
+	// protected InfoPK infoPK;
 
 	public Participation() {
-	}
-
-	public long getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(long idUser) {
-		this.idUser = idUser;
-	}
-
-	public long getIdEvent() {
-		return idEvent;
-	}
-
-	public void setIdEvent(long idEvent) {
-		this.idEvent = idEvent;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
@@ -68,12 +49,29 @@ public class Participation implements Serializable {
 		return true;
 	}
 
+	public long getIdUser() {
+		return idUser;
+	}
 
-	
+	public void setIdUser(long idUser) {
+		this.idUser = idUser;
+	}
 
+	public long getIdEvent() {
+		return idEvent;
+	}
 
+	public void setIdEvent(long idEvent) {
+		this.idEvent = idEvent;
+	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
-
-	
+	public Participation(long idUser, long idEvent) {
+		super();
+		this.idUser = idUser;
+		this.idEvent = idEvent;
+	}
 }

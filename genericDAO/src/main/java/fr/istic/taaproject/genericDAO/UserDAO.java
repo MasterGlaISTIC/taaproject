@@ -15,6 +15,7 @@ public class UserDAO extends GenericDaoImpl<User, Long> implements InterfaceUser
 		 return entityManager.createQuery("SELECT p FROM User p", User.class).getResultList();
 	}
 
+
 	public Long getUserByEmail(String email){
 		
 		List<Long> ids = entityManager.createQuery("SELECT p.idUser FROM User p where p.email = '"+email+"'", Long.class).getResultList();

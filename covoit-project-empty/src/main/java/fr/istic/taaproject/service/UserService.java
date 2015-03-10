@@ -33,7 +33,6 @@ public class UserService implements IUserService {
 
 	}
 
-
 	@Override
 	@POST
 	@Path("/addUser")
@@ -87,6 +86,13 @@ public class UserService implements IUserService {
 	public void updateUser(User developpeur) {
 		userDao.update(developpeur);
 		
+	}
+
+	@Override
+	@POST
+	@Path("/auth")
+	public boolean loginUser(User user) {		
+		return userDao.authentificate(user.getEmail(),user.getPasswd());
 	}
 
 }
