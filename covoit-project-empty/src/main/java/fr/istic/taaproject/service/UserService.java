@@ -2,9 +2,10 @@ package fr.istic.taaproject.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -27,15 +28,17 @@ public class UserService implements IUserService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<User> getUsers() {
 		List<User> users = userDao.getAll();
+		System.out.println("get");
 		return users;
 
 	}
 
-	@PUT
+	@POST
 	@Path("/addUser")
-	@Produces({ MediaType.APPLICATION_JSON })
+	@Consumes({ MediaType.APPLICATION_JSON })
 	public void createUser(User user) {
 		userDao.create(user);
+		System.out.println("ssssssssss");
 	}
 
 	public InterfaceUserDao getUserDao() {
@@ -53,6 +56,13 @@ public class UserService implements IUserService {
 		User u = userDao.read(id);
 		 System.out.println("User read + "+u);
 		userDao.delete(u);
+	}
+
+	@Override
+	@POST
+	@Path("/auth")
+	public boolean loginUser(User user) {		
+		return userDao.authentificate(user.getEmail(),user.getPasswd());
 	}
 
 }

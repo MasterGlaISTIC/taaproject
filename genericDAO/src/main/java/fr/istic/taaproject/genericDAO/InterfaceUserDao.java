@@ -8,4 +8,6 @@ import fr.istic.taaproject.model.User;
 public interface InterfaceUserDao extends GenericDao<User, Long>, Serializable{
 
 	List<User> getAll();
+
+	boolean authentificate(String email, String password);
 }

@@ -8,4 +8,5 @@ public interface IUserService {
 	public List<User> getUsers();
 	public void createUser(User user);
 	public void deleteUser(long id);
+	public boolean loginUser(User user);
 }
