@@ -45,7 +45,11 @@ public class GenericDaoImpl<T, PK extends Serializable> implements
 
 
 	public T update(T t) {
-		return this.entityManager.merge(t);
+		transaction.begin();
+		this.entityManager.merge(t);
+		transaction.commit();
+		
+		return t;
 	}
 
 

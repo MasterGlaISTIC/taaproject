@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,6 +14,21 @@ import javax.persistence.TemporalType;
 @Entity 
 public class Event implements Serializable
 {
+
+	@Override
+	public String toString() {
+		return "Event [idEvent=" + idEvent + ", adresse=" + adresse + ", name="
+				+ name + ", date=" + date + "]";
+	}
+
+
+	public Event(String adresse, String name, Date date) {
+		super();
+		this.adresse = adresse;
+		this.name = name;
+		this.date = date;
+	}
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,12 +45,6 @@ public class Event implements Serializable
 	 
 	@Temporal(TemporalType.DATE) 
 	private Date date;
-
-
-	@OneToOne
-	private User createur;
-
-
 
 	public Event(){
 		super();
@@ -82,18 +90,7 @@ public class Event implements Serializable
 	}
 	
 
-	
-	public User getCreateur() {
-		return createur;
-	}
-
-
-	public void setCreateur(User createur) {
-		this.createur = createur;
-	}
-
-
-public void unsetIdEvent() {
+	public void unsetIdEvent() {
 		this.idEvent = 0L;	
 	}
 	

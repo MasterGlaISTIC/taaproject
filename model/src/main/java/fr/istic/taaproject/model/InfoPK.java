@@ -2,27 +2,24 @@ package fr.istic.taaproject.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 
+public class InfoPK implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-@Entity
-@IdClass(InfoPK.class)
-public class Participation implements Serializable {
+	long idUser;
 
-	private static final long serialVersionUID = 7400709297340150637L;
+	long idEvent;
 
-	@Id long idUser;
-
-	@Id long idEvent;
-
-//	@EmbeddedId
-//	protected InfoPK infoPK;
-
-	public Participation() {
+	
+	public InfoPK(long idUser, long idEvent) {
+		this.idUser = idUser;
+		this.idEvent = idEvent;
+	}
+	public InfoPK() {
+		// TODO Auto-generated constructor stub
 	}
 
+	
 	public long getIdUser() {
 		return idUser;
 	}
@@ -38,11 +35,6 @@ public class Participation implements Serializable {
 	public void setIdEvent(long idEvent) {
 		this.idEvent = idEvent;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -51,7 +43,6 @@ public class Participation implements Serializable {
 		result = prime * result + (int) (idUser ^ (idUser >>> 32));
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,20 +51,13 @@ public class Participation implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Participation other = (Participation) obj;
+		InfoPK other = (InfoPK) obj;
 		if (idEvent != other.idEvent)
 			return false;
 		if (idUser != other.idUser)
 			return false;
 		return true;
 	}
-
-
 	
 
-
-
-
-
-	
 }
