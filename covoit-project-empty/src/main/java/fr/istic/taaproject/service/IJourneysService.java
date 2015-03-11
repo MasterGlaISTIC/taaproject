@@ -6,4 +6,5 @@ import fr.istic.taaproject.model.Event;
 
 public interface IJourneysService {
 	public List<Event> journeys();
+	public void createEvent(Event event);
 }

@@ -33,6 +33,7 @@ public class UserService implements IUserService {
 
 	}
 
+	@Override
 	@POST
 	@Path("/addUser")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -40,6 +41,26 @@ public class UserService implements IUserService {
 		userDao.create(user);
 	}
 
+//	@Override
+//	@Path("/delete/{email}")
+//	@DELETE
+//	public void deleteUser(@PathParam("email") String email) {
+//		Long id = userDao.getUserByEmail(email);
+//		System.out.println("--------------> ID "+id);
+//		//User u = userDao.read(id);
+//		//userDao.delete(u);
+//	}
+	
+	@Override
+	@Path("/delete/{id}")
+	@DELETE
+	public void deleteUser(@PathParam("id") Long id) {
+//		Long id = userDao.getUserByEmail(email);
+		System.out.println("DELETING --------------> ID "+id);
+		User u = userDao.read(id);
+		userDao.delete(u);
+	}
+	
 	public InterfaceUserDao getUserDao() {
 		return userDao;
 	}
@@ -48,13 +69,22 @@ public class UserService implements IUserService {
 		this.userDao = userDao;
 	}
 
+
+	
+	
 	@Override
-	@Path("/delete/{id}")
-	@DELETE
-	public void deleteUser(@PathParam("id") long id) {
-		User u = userDao.read(id);
-		 System.out.println("User read + "+u);
-		userDao.delete(u);
+	@Path("/getIdUser/{email}")
+	@GET
+	public Long getIdUserByEmail(@PathParam("email") String string) {
+		System.out.println("Azzuuuuuuuuuuuuul");
+		return userDao.getUserByEmail(string);
+		
+	}
+
+	@Override
+	public void updateUser(User developpeur) {
+		userDao.update(developpeur);
+		
 	}
 
 	@Override

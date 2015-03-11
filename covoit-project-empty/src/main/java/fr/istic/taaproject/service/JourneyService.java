@@ -2,7 +2,9 @@ package fr.istic.taaproject.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -28,6 +30,15 @@ public class JourneyService implements IJourneysService{
 		return eventDao.getAllJourneys();
 	}
 
+
+	@POST
+	@Path("/addJourney")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	public void createEvent(Event event) {
+		eventDao.create(event);
+		
+	}
+
 	public InterfaceEventDao getEventDao() {
 		return eventDao;
 	}
@@ -35,5 +46,4 @@ public class JourneyService implements IJourneysService{
 	public void setEventDao(InterfaceEventDao eventDao) {
 		this.eventDao = eventDao;
 	}
-	
 }

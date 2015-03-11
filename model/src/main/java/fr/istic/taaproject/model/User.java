@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class User implements Serializable {
@@ -29,13 +32,22 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idUser;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Car> cars;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Event> events;
 
 	public void addCar(Car car) {
 		if (cars == null)
 			cars = new ArrayList<Car>();
 		cars.add(car);
+	}
+	
+	public void addEvent(Event event) {
+		if (events == null)
+			events = new ArrayList<Event>();
+		events.add(event);
 	}
 
 	/**
@@ -120,5 +132,17 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [location=" + location + ", email=" + email + ", name="
 				+ name + ", idUser=" + idUser + ", car=" + cars + "]";
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
 	}
 }
