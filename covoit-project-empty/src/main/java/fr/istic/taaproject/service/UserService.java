@@ -38,7 +38,6 @@ public class UserService implements IUserService {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public void createUser(User user) {
 		userDao.create(user);
-		System.out.println("ssssssssss");
 	}
 
 	public InterfaceUserDao getUserDao() {
