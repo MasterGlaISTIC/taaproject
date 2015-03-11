@@ -79,17 +79,32 @@ scotchApp.controller('aboutController', function($scope, $http, $location) {
 	})
 });
 
-scotchApp.controller('contactController', function($scope) {
-	$http.get("http://localhost:8080/covoit-service/rest/cars/cars").then(function(data) {
-		$scope.car = data.data;
+scotchApp.controller('contactController', function($scope, $http, $location) {
+//	 $scope.authen = function () {
+//		 $http.post('http://localhost:8080/covoit-service/rest/users/auth', {email:$scope.user.email, passwd:$scope.user.passwd})
+//		 .success(function(data, status, headers, config) {
+//			 if(data == "true"){
+//				  $location.path('/about')
+//			  } else {
+//				  $scope.msgErreur="Email ou mot de passe est incorrecte"
+//			  }
+//		  }).
+//		  error(function(data, status, headers, config) {
+//			  alert("erreur "+status)
+//		  });
+//     }
+	// add for test
+	$http.get("http://localhost:8080/covoit-service/rest/users/users").then(function(data) {
+		$scope.auth = data.data;
 	})
 	});
 
 scotchApp.controller('addEventsController', function($scope) {
-//	$http.post("http://localhost:8080/covoit-service/rest/cars/cars",
-//			  encodeURI("date="+date) + "&" + encodeURI("place="+place) + "&" + encodeURI("desc="+desc),
-//			  {headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/x-www-form-urlencoded'}}).success(callback);
-});
+	// add for test
+	$http.get("http://localhost:8080/covoit-service/rest/users/users").then(function(data) {
+		$scope.auth = data.data;
+	})
+	});
 
 
 
