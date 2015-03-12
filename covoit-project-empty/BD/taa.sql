@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 12 Mars 2015 à 16:18
+-- Généré le: Jeu 12 Mars 2015 à 16:34
 -- Version du serveur: 5.5.40-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.5
 
@@ -119,13 +119,13 @@ CREATE TABLE IF NOT EXISTS `User` (
 --
 
 INSERT INTO `User` (`idUser`, `car`, `email`, `location`, `name`, `passwd`) VALUES
-(1, 0x6d6f687373696e652e616d686163686940676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', '1'),
-(2, 0x796163696e652e63686161626940676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'CHAABI', '', '2'),
-(3, 0x637265617465757240676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'CREATEUR', '', '3'),
-(4, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', NULL),
-(5, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', NULL),
-(6, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', NULL),
-(7, NULL, 'yacine@gmail.com', 'Rennes', 'Yacine', NULL);
+(1, 0x6d6f687373696e652e616d686163686940676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'Rennes', 'MAXIME', 'gentil'),
+(2, 0x796163696e652e63686161626940676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'Rennes', 'CHAABI', '2'),
+(3, 0x637265617465757240676d61696c2e636f6d, 'mohssine.amhachi@gmail.com', 'Rennes', 'erwann', '3'),
+(4, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', '123'),
+(5, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', '234'),
+(6, NULL, 'mohssine.amhachi@gmail.com', 'Rennes', 'Mohssine', '345'),
+(7, NULL, 'yacine@gmail.com', 'Rennes', 'Yacine', '456');
 
 -- --------------------------------------------------------
 
