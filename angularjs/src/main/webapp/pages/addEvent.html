@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Angular Convoit apllication</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-model="checked"><a href="#addevent"><i
+						class="fa fa-shield"></i> Add Event</a></li>
+				<li ng-model="checked"><a href="#events"><i
+						class="fa fa-shield"></i> Events</a></li>
+				<li ng-model="checked"><a href="#"><i class="fa fa-shield"></i>
+						Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="jumbotron text-center">
+		<h2>ajouter un évenement</h2>
+		<form novalidate class="form-inline">
+			<div class="form-group">
+				<input type="text" ng-model="user.name" class="form-control"
+					placeholder="Enter le nome de l'evenment" /><br /> <input
+					type="text" ng-model="user.adresse" class="form-control"
+					placeholder="Enter l adresse" /><br /> <input type="date"
+					ng-model="user.date" class="form-control"
+					placeholder="Enter la date de l evenement" /><br /> <input
+					type="button" ng-click="addEvent()" class="btn btn-primary btn-xs"
+					value="créer" /> <input type="reset"
+					class="btn btn-primary btn-xs" value="annuler" />
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

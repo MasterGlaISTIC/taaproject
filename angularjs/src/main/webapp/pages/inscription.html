@@ -1,0 +1,13 @@
+<div class="jumbotron text-center"> 
+	<h2>Inscription</h2>
+	<form novalidate class="form-inline">
+	  	<div class="form-group">
+		    <input type="text" ng-model="user.email"  class="form-control" placeholder="Enter Votre email" /><br />
+		    <input type="password" ng-model="user.passwd"  class="form-control" placeholder="Enter Votre Password" /><br />
+		    <input type="text" ng-model="user.name"  class="form-control" placeholder="Enter Votre nom" /><br />
+		    <input type="text" ng-model="user.location"  class="form-control" placeholder="Enter Votre addresse" /><br />
+		    <input  type="button" ng-click="inscription()" class="btn btn-primary btn-xs" value="inscrire"  />
+		    <input type="reset" class="btn btn-primary btn-xs"  value="annuller" />
+	 	</div>
+	</form>
+</div>
