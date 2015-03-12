@@ -38,8 +38,12 @@ public class UserService implements IUserService {
 	@Path("/addUser")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public void createUser(User user) {
+
 		User u = userDao.create(user);
 		System.out.println("ssssssssss");
+
+		userDao.create(user);
+
 	}
 
 //	@Override
