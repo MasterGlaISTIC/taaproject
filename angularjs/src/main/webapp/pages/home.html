@@ -1,10 +1,36 @@
-<div class="jumbotron text-center">
-	<h3>ererererererer</h3>
-  <form novalidate class="simple-form">
-    email: <input type="text" ng-model="user.email" /><br />
-    passwd: <input type="text" ng-model="user.passwd" /><br />
-    <input type="button" ng-click="authen()" value="Connexion" />
-    <input type="reset"  value="Reset" />
-  </form>
-  <h1>{{msgErreur}}</h1>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Angular Convoit apllication</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li ng-model="checked"><a href="#inscription"><i
+					class="fa fa-shield"></i> inscription</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="col-xs-6">
+	<div ng-show="error" class="alert alert-danger">{{error}}</div>
+	<form name="form" ng-submit="login()" role="form">
+		<div class="form-group">
+			<label for="username">Email</label> <i class="fa fa-key"></i> <input
+				type="text" name="username" id="username" class="form-control"
+				ng-model="user.email" required /> <span
+				ng-show="form.username.$dirty && form.username.$error.required"
+				class="help-block">Email is required</span>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label> <i class="fa fa-lock"></i> <input
+				type="password" name="password" id="password" class="form-control"
+				ng-model="user.passwd" required /> <span
+				ng-show="form.password.$dirty && form.password.$error.required"
+				class="help-block">Password is required</span>
+		</div>
+		<div class="form-actions">
+			<button type="submit" ng-click="authen()" class="btn btn-danger">Login</button>
+
+		</div>
+	</form>
+
 </div>

@@ -1,0 +1,66 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/docs.css">
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/font-awesome.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Angular Convoit apllication</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-model="checked"><a href="#addevent"><i
+						class="fa fa-shield"></i> Add Event</a></li>
+				<li ng-model="checked"><a href="#events"><i
+						class="fa fa-shield"></i> Events</a></li>
+				<li ng-model="checked"><a href="#"><i class="fa fa-shield"></i>
+						Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div>
+		<div class="simple" ng-controller="contactController">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Event</th>
+						<th>Location</th>
+						<th>Date</th>
+						<th>nombre de place</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in event">
+						<td data-title="'Name'" width="330"><span></span>
+							<div>
+								<span>{{item.name}}</span>
+							</div></td>
+						<td data-title="'Text'" width="330"><span></span>
+							<div>
+								<span>{{item.adresse}}</span>
+							</div></td>
+						<td data-title="'Text'" width="330"><span></span>
+							<div>
+								<span>{{item.date}}</span>
+							</div></td>
+						<td data-title="'Text'" width="330"><span></span>
+							<div>
+								<span>-</span>
+							</div></td>
+						<td data-title="'Actions'" width="200"><a href=""
+							class="btn btn-primary btn-xs">joindre</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+

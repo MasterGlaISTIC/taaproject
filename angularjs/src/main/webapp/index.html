@@ -5,7 +5,12 @@
 
 <head>
 
-
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/docs.css">
+<link type="text/css" rel="stylesheet"
+	href="http://angularjs.org/css/font-awesome.css">
 
 <!-- SCROLLS -->
 <link rel="stylesheet"
@@ -29,26 +34,15 @@
 <!-- define angular controller -->
 <body ng-controller="mainController">
 
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">Angular Convoit apllication</a>
-      </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
-        <li><a href="#contact"><i class="fa fa-shield"></i> Events</a></li>
-         <li><a href="#contact"><i class="fa fa-shield"></i> have fun</a></li>
-      </ul>
-    </div>
-  </nav>
+	<div id="main" >
+		<div ng-view></div>
 
-  <div id="main">
-  
-    <!-- angular templating -->
-    <div ng-view></div>    
-  </div>  
+		</div>
+
+
+
+
 </body>
 
 </html>
