@@ -38,7 +38,7 @@ public class UserService implements IUserService {
 	@Path("/addUser")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public void createUser(User user) {
-		userDao.create(user);
+		User u = userDao.create(user);
 		System.out.println("ssssssssss");
 	}
 
@@ -77,7 +77,7 @@ public class UserService implements IUserService {
 	@Path("/getIdUser/{email}")
 	@GET
 	public Long getIdUserByEmail(@PathParam("email") String string) {
-		System.out.println("Azzuuuuuuuuuuuuul");
+
 		return userDao.getUserByEmail(string);
 		
 	}

@@ -1,6 +1,6 @@
 Les urls des services :
-	La liste des users 			: 	http://localhost:8080/covoit-service/rest/users/users
-	delete user		 			: 	http://localhost:8080/covoit-service/rest/users/delete/[IDUSER]
+	La liste des users 		: 	http://localhost:8080/covoit-service/rest/users/users
+	delete user		 	: 	http://localhost:8080/covoit-service/rest/users/delete/[IDUSER]
 	La liste des véhicules 		: 	http://localhost:8080/covoit-service/rest/cars/cars
 	La liset des événements 	:	http://localhost:8080/covoit-service/rest/journey/journeys
 	Id utilisateur par EMAIL	:	http://localhost:8080/covoit-service/rest/users/getIdUser/[EMAIL] 
